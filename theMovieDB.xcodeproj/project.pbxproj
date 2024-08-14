@@ -15,6 +15,8 @@
 		9A9503962C6C3AC9002BF948 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9503952C6C3AC9002BF948 /* Colors.swift */; };
 		9A9503982C6C4173002BF948 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9503972C6C4173002BF948 /* MainTabView.swift */; };
 		9A95039A2C6C48B2002BF948 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9503992C6C48B2002BF948 /* SearchBar.swift */; };
+		9A95039C2C6C4DE1002BF948 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A95039B2C6C4DE1002BF948 /* CollectionView.swift */; };
+		9A95039E2C6C4F1B002BF948 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A95039D2C6C4F1A002BF948 /* CardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		9A9503952C6C3AC9002BF948 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		9A9503972C6C4173002BF948 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		9A9503992C6C48B2002BF948 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		9A95039B2C6C4DE1002BF948 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
+		9A95039D2C6C4F1A002BF948 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,8 +95,10 @@
 		9A95038D2C6C2D3C002BF948 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				9A95039D2C6C4F1A002BF948 /* CardView.swift */,
 				9A9503922C6C368B002BF948 /* RankedCardView.swift */,
 				9A9503992C6C48B2002BF948 /* SearchBar.swift */,
+				9A95039B2C6C4DE1002BF948 /* CollectionView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -193,9 +199,11 @@
 			files = (
 				9A9503912C6C2E5D002BF948 /* HomeView.swift in Sources */,
 				9A9503962C6C3AC9002BF948 /* Colors.swift in Sources */,
+				9A95039C2C6C4DE1002BF948 /* CollectionView.swift in Sources */,
 				9A9503932C6C368B002BF948 /* RankedCardView.swift in Sources */,
 				9A95037E2C6C2C2C002BF948 /* theMovieDBApp.swift in Sources */,
 				9A9503982C6C4173002BF948 /* MainTabView.swift in Sources */,
+				9A95039E2C6C4F1B002BF948 /* CardView.swift in Sources */,
 				9A95039A2C6C48B2002BF948 /* SearchBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
