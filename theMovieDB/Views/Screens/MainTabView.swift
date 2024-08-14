@@ -9,9 +9,10 @@ import SwiftUI
 
 struct MainTabView: View {
     var body: some View {
+        // todo: make the tab items' creation more dynamic
         TabView() {
             NavigationStack() {
-                Text("Home View")
+                HomeView()
             }
             .tabItem {
                 Text("Home")

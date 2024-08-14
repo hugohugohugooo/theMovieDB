@@ -8,8 +8,13 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State private var searchText: String = "Star Wars";
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .leading) {
+            Text("What do you want to watch?")
+            SearchBar(searchText: $searchText)
+        }
     }
 }
 

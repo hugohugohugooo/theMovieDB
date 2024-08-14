@@ -13,19 +13,22 @@ enum Colors {
     case blue
     case white
     case orange
+    case background
 }
 
 extension Colors {
     var value: Color {
         switch self {
             case .grey:
-                return Color.black
+                return Color.gray
             case .blue:
                 return Color.blue
             case .white:
                 return Color.white
             case .orange:
                 return Color.orange
+            case .background:
+                return Color.black
         }
     }
 }

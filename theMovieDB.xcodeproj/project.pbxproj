@@ -14,6 +14,7 @@
 		9A9503932C6C368B002BF948 /* RankedCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9503922C6C368B002BF948 /* RankedCardView.swift */; };
 		9A9503962C6C3AC9002BF948 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9503952C6C3AC9002BF948 /* Colors.swift */; };
 		9A9503982C6C4173002BF948 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9503972C6C4173002BF948 /* MainTabView.swift */; };
+		9A95039A2C6C48B2002BF948 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9503992C6C48B2002BF948 /* SearchBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		9A9503922C6C368B002BF948 /* RankedCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankedCardView.swift; sourceTree = "<group>"; };
 		9A9503952C6C3AC9002BF948 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		9A9503972C6C4173002BF948 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		9A9503992C6C48B2002BF948 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				9A9503922C6C368B002BF948 /* RankedCardView.swift */,
+				9A9503992C6C48B2002BF948 /* SearchBar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 				9A9503932C6C368B002BF948 /* RankedCardView.swift in Sources */,
 				9A95037E2C6C2C2C002BF948 /* theMovieDBApp.swift in Sources */,
 				9A9503982C6C4173002BF948 /* MainTabView.swift in Sources */,
+				9A95039A2C6C48B2002BF948 /* SearchBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
