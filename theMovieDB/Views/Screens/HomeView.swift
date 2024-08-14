@@ -16,7 +16,7 @@ struct HomeView: View {
                 VStack(alignment: .leading) {
                     Text("What do you want to watch?")
                     SearchBar(searchText: $searchText)
-                    CollectionView(cards: [Card(), Card(), Card(), Card(), Card(), Card()])
+                    HCollectionView(items: [Card(), Card(), Card(), Card(), Card(), Card()], spacing: 20, itemWidth: 90, itemHeight: 160)
                 }
             }
             .scrollIndicators(/*@START_MENU_TOKEN@*/.hidden/*@END_MENU_TOKEN@*/, axes: /*@START_MENU_TOKEN@*/[.vertical, .horizontal]/*@END_MENU_TOKEN@*/)

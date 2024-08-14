@@ -11,14 +11,18 @@ struct Card: Identifiable {
     let id = UUID()
 }
 
-struct CollectionView: View {
-    let cards: [Card]
+struct HCollectionView: View {
+    let items: [Card]
+    let spacing: CGFloat
+    let itemWidth: CGFloat
+    let itemHeight: CGFloat
+    
     var body: some View {
         ScrollView(.horizontal) {
-            HStack(alignment: .top, spacing: 20) {
-                ForEach(cards) { card in
+            HStack(alignment: .top, spacing: spacing) {
+                ForEach(items) { card in
                     CardView()
-                        .frame(width: 90, height: 160)
+                        .frame(width: itemWidth, height: itemHeight)
                 }
             }
         }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainTabView: View {
     var body: some View {
-        // todo: make the tab items' creation more dynamic
+        // todo: make the tab items' creation dynamic
         TabView() {
             NavigationStack() {
                 HomeView()
@@ -37,7 +37,6 @@ struct MainTabView: View {
                 Image(systemName: "bookmark.fill")
             }
             .tag(2)
-                
         }
         .tint(Colors.blue.value)
         .onAppear(perform: {
