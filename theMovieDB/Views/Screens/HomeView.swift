@@ -18,8 +18,11 @@ struct HomeView: View {
             ScrollView {
                 VStack(alignment: .leading) {
                     //Header
-                    Text("What do you want to watch?")
-                    SearchBar(searchText: $searchText)
+                    VStack(alignment: .leading) {
+                        Text("What do you want to watch?")
+                        SearchBar(searchText: $searchText)
+                    }
+                    .padding(.all)
                     
                     // Popular
                     HCollectionView(items: items, spacing: 20, itemWidth: 90, itemHeight: 160)
