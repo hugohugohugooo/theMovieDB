@@ -23,7 +23,7 @@ struct RankedCardView: View {
                 .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                 .foregroundColor(Colors.grey.value)
                 .offset(x: -8, y: 8)
-                .shadow(color: Colors.blue.value, radius: 1)
+                .shadow(color: Colors.highlightColor.value, radius: 1)
         }
     }
 }

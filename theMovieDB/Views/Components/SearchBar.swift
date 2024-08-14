@@ -13,22 +13,16 @@ struct SearchBar: View {
     var body: some View {
         HStack {
             ZStack {
-                RoundedRectangle(cornerRadius: 12)
-                    .frame(height: 40)
-                    .cornerRadius(12)
-                    .foregroundColor(.red)
                 HStack(alignment: .center) {
-                    Spacer()
                     TextField("Search", text: $searchText)
                     .frame(height: 50)
                     .textFieldStyle(.plain)
                     .cornerRadius(12)
                     Image(systemName: "magnifyingglass")
-                    Spacer()
                 }
+                .padding(.horizontal)
                 .foregroundColor(Colors.white.value)
-                .background(Colors.background.value)
-                .cornerRadius(12)
+                .background(Colors.grey.value, in: Capsule())
             }
         }
     }

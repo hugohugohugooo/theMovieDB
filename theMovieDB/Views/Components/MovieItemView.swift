@@ -21,28 +21,10 @@ struct MovieItemView: View {
                 Spacer()
                 
                 // Rating
-                HStack {
-                    Image(systemName: "star")
-                    Text("Rating")
-                }
-                
-                // Genre
-                HStack {
-                    Image(systemName: "ticket")
-                    Text("Genre")
-                }
-                
-                // Release Date
-                HStack {
-                    Image(systemName: "calendar")
-                    Text("Release date")
-                }
-                
-                // Duration
-                HStack {
-                    Image(systemName: "clock")
-                    Text("Duration")
-                }
+                Label("Rating", systemImage: "star")
+                Label("Genre", systemImage: "ticket")
+                Label("Release Date", systemImage: "calendar")
+                Label("Duration", systemImage: "clock")
             }
         }
     }

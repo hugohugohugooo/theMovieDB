@@ -10,7 +10,7 @@ import SwiftUI
 
 enum Colors {
     case grey
-    case blue
+    case highlightColor
     case white
     case orange
     case background
@@ -20,15 +20,15 @@ extension Colors {
     var value: Color {
         switch self {
             case .grey:
-                return Color.gray
-            case .blue:
-                return Color.blue
+                return Color("color.grey")
+            case .highlightColor:
+                return Color("color.highlight")
             case .white:
                 return Color.white
             case .orange:
-                return Color.orange
+                return Color("color.orange")
             case .background:
-                return Color.black
+                return Color("color.background")
         }
     }
 }

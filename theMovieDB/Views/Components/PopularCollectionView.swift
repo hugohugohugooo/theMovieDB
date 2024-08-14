@@ -11,17 +11,17 @@ struct Card: Identifiable {
     let id = UUID()
 }
 
-struct HCollectionView: View {
+struct PopularCollectionView: View {
     let items: [Card]
-    let spacing: CGFloat
-    let itemWidth: CGFloat
-    let itemHeight: CGFloat
+    var spacing = 30.0
+    var itemWidth = 90.0
+    var itemHeight = 160.0
     
     var body: some View {
         ScrollView(.horizontal) {
             HStack(alignment: .top, spacing: spacing) {
                 ForEach(items) { card in
-                    CardView()
+                    RankedCardView()
                         .frame(width: itemWidth, height: itemHeight)
                 }
             }

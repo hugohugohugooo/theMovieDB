@@ -23,19 +23,20 @@ struct HomeView: View {
                         SearchBar(searchText: $searchText)
                     }
                     .padding(.all)
+                    .foregroundStyle(.white)
                     
                     // Popular
-                    HCollectionView(items: items, spacing: 20, itemWidth: 90, itemHeight: 160)
+                    PopularCollectionView(items: items)
                     
                     // Categories
                     VStack(alignment: .leading) {
-                                Picker("", selection: $selectedTab) {
-                                    Text("Now playing").tag(0)
-                                    Text("Upcoming").tag(1)
-                                    Text("Top rated").tag(2)
-                                }
-                                .pickerStyle(SegmentedPickerStyle())
-                                .padding(.bottom, 10)
+                        Picker("", selection: $selectedTab) {
+                            Text("Now playing").tag(0)
+                            Text("Upcoming").tag(1)
+                            Text("Top rated").tag(2)
+                        }
+                        .pickerStyle(SegmentedPickerStyle())
+                        .padding(.bottom, 10)
                     }
                     let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
 
@@ -50,6 +51,7 @@ struct HomeView: View {
                                 }
                 }
             }
+            .background(Colors.background.value)
             .scrollIndicators(/*@START_MENU_TOKEN@*/.hidden/*@END_MENU_TOKEN@*/, axes: /*@START_MENU_TOKEN@*/[.vertical, .horizontal]/*@END_MENU_TOKEN@*/)
         }
        

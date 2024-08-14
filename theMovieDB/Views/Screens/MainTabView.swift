@@ -22,7 +22,7 @@ struct MainTabView: View {
             .tag(0)
             
             NavigationStack() {
-                Text("Search")
+                SearchView()
             }
             .tabItem {
                 Label("Search", systemImage: "magnifyingglass")
@@ -30,7 +30,7 @@ struct MainTabView: View {
             .tag(1)
             
             NavigationStack() {
-                Text("Watch List")
+                WatchListView()
             }
             .tabItem {
                 Text("Watch list")
@@ -38,11 +38,12 @@ struct MainTabView: View {
             }
             .tag(2)
         }
-        .tint(Colors.blue.value)
+        .tint(Colors.highlightColor.value)
+        .toolbarBackground(Colors.background.value, for: .tabBar)
         .onAppear(perform: {
             UITabBar.appearance().unselectedItemTintColor = .gray
             UITabBarItem.appearance().badgeColor = UIColor(Colors.orange.value)
-            UITabBar.appearance().backgroundColor = UIColor(Colors.grey.value)
+            UITabBar.appearance().backgroundColor = UIColor(Colors.background.value)
         })
     }
 }
