@@ -19,7 +19,7 @@ extension Colors {
     var value: Color {
         switch self {
             case .grey:
-                return Color.gray
+                return Color.black
             case .blue:
                 return Color.blue
             case .white:

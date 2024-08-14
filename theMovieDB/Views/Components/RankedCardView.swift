@@ -8,21 +8,22 @@
 import SwiftUI
 
 struct RankedCardView: View {
-    let rank = "00"
+    let rank = "1"
     
     var body: some View {
         ZStack(alignment: .bottomLeading){
-//            Image("ForSplash")
-//                .resizable()
-//                .scaledToFill()
-//                .clipped()
-//            
+            Image("ForSplash")
+                .resizable()
+                .scaledToFill()
+                .clipped()
+                .cornerRadius(5.0)
+            
             Text(rank)
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .foregroundColor(.white)
-                .padding(10)
-                .offset(x: -20, y: 20)
+                .font(.system(size: 80))
+                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                .foregroundColor(Colors.grey.value)
+                .offset(x: -8, y: 8)
+                .shadow(color: Colors.blue.value, radius: 1)
         }
     }
 }
