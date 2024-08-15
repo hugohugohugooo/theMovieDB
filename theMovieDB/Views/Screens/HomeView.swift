@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @StateObject private var movieViewModel = MovieViewModel()
+    @StateObject private var popularViewModel = MovieViewModel()
     @State private var searchText: String = "Star Wars";
     @State private var selectedTab: CGFloat = 0
     
@@ -29,19 +29,19 @@ struct HomeView: View {
                     
                     // Popular Movies
                     Group {
-                        if movieViewModel.isLoading {
+                        if popularViewModel.isLoading {
                             ProgressView()
-                        } else if let errorMessage = movieViewModel.errorMessage {
+                        } else if let errorMessage = popularViewModel.errorMessage {
                             Text(errorMessage)
                             //TODO: Show error view here
                         } else {
-                            PopularCollectionView(movies: movieViewModel.popularMovies)
+                            PopularCollectionView(movies: popularViewModel.movies)
                                 .frame(height:geometry.size.height * 0.4)
                         }
                     }
                     .onAppear {
                         Task {
-                            await movieViewModel.getMovies(for:.popular)
+                            await popularViewModel.getMovies(for:.popular)
                         }
                     }
                     // Categories

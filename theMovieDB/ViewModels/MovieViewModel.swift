@@ -9,7 +9,7 @@ import Foundation
 
 @MainActor
 class MovieViewModel : ObservableObject {
-    @Published var popularMovies: [Movie] = []
+    @Published var movies: [Movie] = []
     @Published var isLoading = false
     @Published var errorMessage: String?
     
@@ -24,7 +24,7 @@ class MovieViewModel : ObservableObject {
         errorMessage = nil
         
         do {
-            popularMovies = try await apiService.fetchMovies(for: endpoint)
+            movies = try await apiService.fetchMovies(for: endpoint)
         } catch {
             errorMessage = error.localizedDescription
         }
