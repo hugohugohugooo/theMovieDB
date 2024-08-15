@@ -9,11 +9,12 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject private var popularViewModel = MovieViewModel()
+    @StateObject private var nowPlayingViewModel = MovieViewModel()
+    @StateObject private var upcomingViewModel = MovieViewModel()
+    @StateObject private var topRatedViewModel = MovieViewModel()
+
     @State private var searchText: String = "Star Wars";
     @State private var selectedTab: CGFloat = 0
-    
-    private var popularMovies: [Movie]?
-    
     
     var body: some View {
         GeometryReader { geometry in
@@ -28,15 +29,17 @@ struct HomeView: View {
                     .foregroundStyle(.white)
                     
                     // Popular Movies
-                    Group {
+                    VStack {
                         if popularViewModel.isLoading {
                             ProgressView()
                         } else if let errorMessage = popularViewModel.errorMessage {
                             Text(errorMessage)
                             //TODO: Show error view here
                         } else {
-                            PopularCollectionView(movies: popularViewModel.movies)
-                                .frame(height:geometry.size.height * 0.4)
+                            if let popularMovies = popularViewModel.movies {
+                                PopularCollectionView(movies: popularMovies)
+                                    .frame(height:geometry.size.height * 0.4)
+                            }
                         }
                     }
                     .onAppear {
@@ -56,17 +59,21 @@ struct HomeView: View {
 //                        .background(Colors.background.value)
                         .tint(Colors.white.value)
                     }
+                    
                     let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
-
                     LazyVGrid(columns: columns, spacing: 0) {
-                                    ForEach(1...6, id: \.self) { number in
-                                        Image("ForSplash")
-                                            .resizable()
-                                            .scaledToFill()
-                                            .clipped()
-                                            .cornerRadius(1.0)
-                                    }
-                                }
+                        if let upcomingMovies = upcomingViewModel.movies {
+                            ForEach(0..<6) { index in
+                                PosterView(movie: upcomingMovies[index])
+                                    .frame(width:geometry.size.width * 0.30)
+                            }
+                        }
+                    }
+                    .onAppear {
+                        Task {
+                            await upcomingViewModel.getMovies(for:.upcoming)
+                        }
+                    }
                 }
             }
             .background(Colors.background.value)

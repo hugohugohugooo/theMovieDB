@@ -9,7 +9,7 @@ import Foundation
 
 @MainActor
 class MovieViewModel : ObservableObject {
-    @Published var movies: [Movie] = []
+    @Published var movies: [Movie]?
     @Published var isLoading = false
     @Published var errorMessage: String?
     

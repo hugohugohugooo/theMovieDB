@@ -13,7 +13,7 @@ struct PopularCollectionView: View {
     var body: some View {
         GeometryReader { geometry in
             ScrollView(.horizontal) {
-                HStack(alignment: .top, spacing: geometry.size.width * 0.1) {
+                LazyHStack(alignment: .top, spacing: geometry.size.width * 0.1) {
                     ForEach(movies.indices) { index in
                         let itemWidth = geometry.size.width * 0.4
                         let itemHeight = itemWidth * 16/9

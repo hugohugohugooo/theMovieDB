@@ -39,7 +39,6 @@ struct MainTabView: View {
             .tag(2)
         }
         .tint(Colors.highlightColor.value)
-        .toolbarBackground(Colors.background.value, for: .tabBar)
         .onAppear(perform: {
             UITabBar.appearance().unselectedItemTintColor = .gray
             UITabBarItem.appearance().badgeColor = UIColor(Colors.orange.value)
