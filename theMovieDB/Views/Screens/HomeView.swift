@@ -41,7 +41,7 @@ struct HomeView: View {
                     }
                     .onAppear {
                         Task {
-                            await movieViewModel.getPopularMovies()
+                            await movieViewModel.getMovies(for:.popular)
                         }
                     }
                     // Categories
@@ -51,8 +51,10 @@ struct HomeView: View {
                             Text("Upcoming").tag(1)
                             Text("Top rated").tag(2)
                         }
-                        .pickerStyle(SegmentedPickerStyle())
+                        .pickerStyle(.segmented)
                         .padding(.bottom, 10)
+//                        .background(Colors.background.value)
+                        .tint(Colors.white.value)
                     }
                     let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
 

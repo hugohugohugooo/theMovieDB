@@ -13,18 +13,18 @@ class MovieViewModel : ObservableObject {
     @Published var isLoading = false
     @Published var errorMessage: String?
     
-    private let apiService: TmdbAPI
+    private let apiService: TheMovieDBProtocol
     
-    init(apiService: TmdbAPI = APIService()) {
+    init(apiService: TheMovieDBProtocol = TheMovieDBService()) {
         self.apiService = apiService;
     }
     
-    func getPopularMovies() async {
+    func getMovies(for endpoint: MovieEndpoints) async {
         isLoading = true
         errorMessage = nil
         
         do {
-            popularMovies = try await apiService.fetchPopularMovies()
+            popularMovies = try await apiService.fetchMovies(for: endpoint)
         } catch {
             errorMessage = error.localizedDescription
         }

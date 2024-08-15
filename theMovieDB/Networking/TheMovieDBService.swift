@@ -1,5 +1,5 @@
 //
-//  WatchDBAPI.swift
+//  TheMovieDBService.swift
 //  theMovieDB
 //
 //  Created by Hugo Rodriguez S. on 14/8/24.
@@ -7,17 +7,15 @@
 
 import Foundation
 
-protocol TmdbAPI {
-    func fetchPopularMovies() async throws -> [Movie]
-}
-
-class APIService: TmdbAPI {
+class TheMovieDBService: TheMovieDBProtocol {
     //TODO: Cleanup env variables
-    let baseURL = Bundle.main.object(forInfoDictionaryKey: "theMovieDB_Base_URL") ?? "https://api.themoviedb.org/3"
-    private let authKey = Bundle.main.object(forInfoDictionaryKey: "theWatchDB_API_Key") ?? "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyYmYxMDA1NDFiY2IwODI4NGQwZjEzMTM3MTY5YTc0NiIsIm5iZiI6MTcyMzU5NjA5My4wNzY0NDcsInN1YiI6IjY2YmJmYzNkOWEzNzk0MTM2ODcxYWYwZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.PMQxmIVH10Jx0bdFbYzku-uXbh7c-F_8FQrWHbiZLJM"
+    private let baseURL = "https://api.themoviedb.org/3"
+    private let authKey = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyYmYxMDA1NDFiY2IwODI4NGQwZjEzMTM3MTY5YTc0NiIsIm5iZiI6MTcyMzU5NjA5My4wNzY0NDcsInN1YiI6IjY2YmJmYzNkOWEzNzk0MTM2ODcxYWYwZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.PMQxmIVH10Jx0bdFbYzku-uXbh7c-F_8FQrWHbiZLJM"
+    private let urlSession = URLSession.shared
+    private let jsonDecoder = APIUtils.jsonDecoder
     
-    func fetchPopularMovies() async throws -> [Movie] {
-        guard let url = URL(string: "\(baseURL)/movie/popular") else {
+    func fetchMovies(for endpoint: MovieEndpoints) async throws -> [Movie] {
+        guard let url = URL(string: "\(baseURL)/movie/\(endpoint.rawValue)") else {
             throw URLError(.badURL)
         }
         var components = URLComponents(url: url, resolvingAgainstBaseURL: true)!
