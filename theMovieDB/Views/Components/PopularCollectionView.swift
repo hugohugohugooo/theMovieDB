@@ -9,20 +9,22 @@ import SwiftUI
 
 struct PopularCollectionView: View {
     let movies: [Movie]
-    var spacing = 30.0
-    var itemWidth = 90.0
-    var itemHeight = 160.0
     
     var body: some View {
-        ScrollView(.horizontal) {
-            HStack(alignment: .top, spacing: spacing) {
-                ForEach(movies) { movie in
-                    RankedCardView(movie: movie)
-                        .frame(width: itemWidth, height: itemHeight)
+        GeometryReader { geometry in
+            ScrollView(.horizontal) {
+                HStack(alignment: .top, spacing: geometry.size.width * 0.1) {
+                    ForEach(movies.indices) { index in
+                        let itemWidth = geometry.size.width * 0.4
+                        let itemHeight = itemWidth * 16/9
+                        PosterView(movie: movies[index], rank:String(index+1))
+                            .frame(width: itemWidth, height: itemHeight)
+                    }
                 }
+                .padding(.leading, 30.0)
             }
+            .scrollIndicators(/*@START_MENU_TOKEN@*/.hidden/*@END_MENU_TOKEN@*/, axes: /*@START_MENU_TOKEN@*/[.vertical, .horizontal]/*@END_MENU_TOKEN@*/)
         }
-        .scrollIndicators(/*@START_MENU_TOKEN@*/.hidden/*@END_MENU_TOKEN@*/, axes: /*@START_MENU_TOKEN@*/[.vertical, .horizontal]/*@END_MENU_TOKEN@*/)
     }
 }
 

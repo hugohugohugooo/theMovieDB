@@ -16,7 +16,7 @@ struct HomeView: View {
     
     
     var body: some View {
-        GeometryReader { geometryReader in
+        GeometryReader { geometry in
             ScrollView {
                 VStack(alignment: .leading) {
                     //Header
@@ -36,6 +36,7 @@ struct HomeView: View {
                             //TODO: Show error view here
                         } else {
                             PopularCollectionView(movies: movieViewModel.popularMovies)
+                                .frame(height:geometry.size.height * 0.4)
                         }
                     }
                     .onAppear {

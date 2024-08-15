@@ -16,11 +16,6 @@ class APIService: TmdbAPI {
     let baseURL = Bundle.main.object(forInfoDictionaryKey: "theMovieDB_Base_URL") ?? "https://api.themoviedb.org/3"
     private let authKey = Bundle.main.object(forInfoDictionaryKey: "theWatchDB_API_Key") ?? "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyYmYxMDA1NDFiY2IwODI4NGQwZjEzMTM3MTY5YTc0NiIsIm5iZiI6MTcyMzU5NjA5My4wNzY0NDcsInN1YiI6IjY2YmJmYzNkOWEzNzk0MTM2ODcxYWYwZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.PMQxmIVH10Jx0bdFbYzku-uXbh7c-F_8FQrWHbiZLJM"
     
-    struct ApiResponse: Codable {
-        var page: Int
-        var results: [Movie]
-    }
-    
     func fetchPopularMovies() async throws -> [Movie] {
         guard let url = URL(string: "\(baseURL)/movie/popular") else {
             throw URLError(.badURL)
@@ -48,7 +43,7 @@ class APIService: TmdbAPI {
             throw URLError(.badServerResponse)
         }
         
-        let apiResponse = try JSONDecoder().decode(ApiResponse.self, from: data)
+        let apiResponse = try APIUtils.jsonDecoder.decode(MovieResponse.self, from: data)
         return apiResponse.results
     }
 }
