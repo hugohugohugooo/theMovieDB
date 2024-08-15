@@ -9,14 +9,16 @@ import SwiftUI
 
 struct RankedCardView: View {
     let rank = "1"
+    let movie: Movie
     
     var body: some View {
         ZStack(alignment: .bottomLeading){
-            Image("ForSplash")
-                .resizable()
-                .scaledToFill()
-                .clipped()
-                .cornerRadius(5.0)
+            AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(movie.poster_path)")){ image in
+                image.resizable()
+            } placeholder: {
+                ProgressView()
+            }
+            .scaledToFill()
             
             Text(rank)
                 .font(.system(size: 80))
@@ -28,6 +30,6 @@ struct RankedCardView: View {
     }
 }
 
-#Preview {
-    RankedCardView()
-}
+//#Preview {
+//    RankedCardView()
+//}

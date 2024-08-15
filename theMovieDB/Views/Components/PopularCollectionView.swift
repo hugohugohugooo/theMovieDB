@@ -7,12 +7,8 @@
 
 import SwiftUI
 
-struct Card: Identifiable {
-    let id = UUID()
-}
-
 struct PopularCollectionView: View {
-    let items: [Card]
+    let movies: [Movie]
     var spacing = 30.0
     var itemWidth = 90.0
     var itemHeight = 160.0
@@ -20,8 +16,8 @@ struct PopularCollectionView: View {
     var body: some View {
         ScrollView(.horizontal) {
             HStack(alignment: .top, spacing: spacing) {
-                ForEach(items) { card in
-                    RankedCardView()
+                ForEach(movies) { movie in
+                    RankedCardView(movie: movie)
                         .frame(width: itemWidth, height: itemHeight)
                 }
             }

@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct HomeView: View {
+    @StateObject private var movieViewModel = MovieViewModel()
     @State private var searchText: String = "Star Wars";
     @State private var selectedTab: CGFloat = 0
     
-    private let items = [Card(), Card(), Card(), Card(), Card(), Card()]
+    private var popularMovies: [Movie]?
+    
     
     var body: some View {
         GeometryReader { geometryReader in
@@ -25,9 +27,22 @@ struct HomeView: View {
                     .padding(.all)
                     .foregroundStyle(.white)
                     
-                    // Popular
-                    PopularCollectionView(items: items)
-                    
+                    // Popular Movies
+                    Group {
+                        if movieViewModel.isLoading {
+                            ProgressView()
+                        } else if let errorMessage = movieViewModel.errorMessage {
+                            Text(errorMessage)
+                            //TODO: Show error view here
+                        } else {
+                            PopularCollectionView(movies: movieViewModel.popularMovies)
+                        }
+                    }
+                    .onAppear {
+                        Task {
+                            await movieViewModel.getPopularMovies()
+                        }
+                    }
                     // Categories
                     VStack(alignment: .leading) {
                         Picker("", selection: $selectedTab) {
@@ -58,6 +73,6 @@ struct HomeView: View {
     }
 }
 
-#Preview {
-    HomeView()
-}
+//#Preview {
+//    HomeView()
+//}

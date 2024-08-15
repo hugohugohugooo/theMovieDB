@@ -23,6 +23,8 @@
 		9A9503AC2C6D3A27002BF948 /* WatchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9503AB2C6D3A27002BF948 /* WatchListView.swift */; };
 		9A9503AE2C6D5321002BF948 /* MovieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9503AD2C6D5321002BF948 /* MovieDetailView.swift */; };
 		9A9503B02C6D5466002BF948 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9503AF2C6D5466002BF948 /* Movie.swift */; };
+		9A9503B32C6D7BDC002BF948 /* TmdbAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9503B22C6D7BDC002BF948 /* TmdbAPI.swift */; };
+		9A9503B92C6D8501002BF948 /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9503B82C6D8501002BF948 /* MovieViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,9 @@
 		9A9503AB2C6D3A27002BF948 /* WatchListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListView.swift; sourceTree = "<group>"; };
 		9A9503AD2C6D5321002BF948 /* MovieDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailView.swift; sourceTree = "<group>"; };
 		9A9503AF2C6D5466002BF948 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		9A9503B22C6D7BDC002BF948 /* TmdbAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TmdbAPI.swift; sourceTree = "<group>"; };
+		9A9503B62C6D7F39002BF948 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		9A9503B82C6D8501002BF948 /* MovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,12 +81,15 @@
 		9A95037C2C6C2C2C002BF948 /* theMovieDB */ = {
 			isa = PBXGroup;
 			children = (
+				9A9503B62C6D7F39002BF948 /* Info.plist */,
 				9A95037D2C6C2C2C002BF948 /* theMovieDBApp.swift */,
 				9A9503812C6C2C2E002BF948 /* Assets.xcassets */,
 				9A9503832C6C2C2E002BF948 /* theMovieDB.entitlements */,
-				9A9503842C6C2C2E002BF948 /* Preview Content */,
 				9A9503942C6C3AAD002BF948 /* Utils */,
+				9A9503842C6C2C2E002BF948 /* Preview Content */,
+				9A9503B12C6D7BBD002BF948 /* Networking */,
 				9A95038F2C6C2DD0002BF948 /* Models */,
+				9A9503B72C6D83E0002BF948 /* ViewModels */,
 				9A95038C2C6C2D29002BF948 /* Views */,
 			);
 			path = theMovieDB;
@@ -143,6 +151,22 @@
 				9A9503952C6C3AC9002BF948 /* Colors.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		9A9503B12C6D7BBD002BF948 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				9A9503B22C6D7BDC002BF948 /* TmdbAPI.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		9A9503B72C6D83E0002BF948 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				9A9503B82C6D8501002BF948 /* MovieViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,8 +247,10 @@
 				9A9503AC2C6D3A27002BF948 /* WatchListView.swift in Sources */,
 				9A9503932C6C368B002BF948 /* RankedCardView.swift in Sources */,
 				9A95037E2C6C2C2C002BF948 /* theMovieDBApp.swift in Sources */,
+				9A9503B32C6D7BDC002BF948 /* TmdbAPI.swift in Sources */,
 				9A9503AE2C6D5321002BF948 /* MovieDetailView.swift in Sources */,
 				9A9503982C6C4173002BF948 /* MainTabView.swift in Sources */,
+				9A9503B92C6D8501002BF948 /* MovieViewModel.swift in Sources */,
 				9A9503A62C6D365A002BF948 /* MovieItemView.swift in Sources */,
 				9A9503AA2C6D38E4002BF948 /* ListView.swift in Sources */,
 				9A95039E2C6C4F1B002BF948 /* CardView.swift in Sources */,
@@ -360,6 +386,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"theMovieDB/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = theMovieDB/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -396,6 +423,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"theMovieDB/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = theMovieDB/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;

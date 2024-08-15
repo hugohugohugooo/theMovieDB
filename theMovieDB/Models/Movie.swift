@@ -7,11 +7,8 @@
 
 import Foundation
 
-struct Movie {
+struct Movie: Codable, Identifiable {
+    let id: Int
     let title: String
-    let rating: String
-    let genre: String
-    let releaseDate: Date
-    let duration: Int
-    
+    var poster_path: String
 }
