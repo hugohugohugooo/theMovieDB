@@ -51,7 +51,7 @@ struct HeaderView: View {
             }
             .foregroundColor(Colors.white.value)
             .font(.system(size: 100))
-            .opacity(0.7)
+            .opacity(0.8)
             
             ratingView(movie: movie)
         }
@@ -101,11 +101,14 @@ struct DetailsView: View {
         
             // Details
             HStack(alignment:.center) {
+                Spacer()
                 Label(movie.releaseDate ??
                       "n/a", systemImage: "calendar")
                 Label(movie.durationText, systemImage: "clock")
                 Label(String(movie.id), systemImage: "ticket")
+                Spacer()
             }
+            .font(.subheadline)
             .foregroundColor(Color.gray)
             
             // Overview
