@@ -16,6 +16,11 @@ struct Movie: Codable, Identifiable, Equatable {
     let title: String
     var backdropPath: String?
     var posterPath: String?
+    let overview: String
+    let voteAverage: Double
+    let voteCount: Int
+    let runtime: Int?
+    let releaseDate: String?
     
     var backdropURL: URL {
         return URL(string: "https://image.tmdb.org/t/p/w500\(backdropPath ?? "")")!
@@ -23,5 +28,19 @@ struct Movie: Codable, Identifiable, Equatable {
     
     var posterURL: URL {
         return URL(string: "https://image.tmdb.org/t/p/w500\(posterPath ?? "")")!
+    }
+    
+    var durationText: String {
+        guard let runtime = self.runtime, runtime > 0 else {
+            return "N/A"
+        }
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .full
+        formatter.allowedUnits = [.hour, .minute]
+        return formatter.string(from: TimeInterval(runtime) * 60) ?? "N/A"
+    }
+    
+    var ratingText: String {
+        return String(round(self.voteAverage * 10) / 10.0)
     }
 }

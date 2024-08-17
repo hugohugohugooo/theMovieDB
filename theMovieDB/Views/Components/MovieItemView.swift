@@ -32,7 +32,7 @@ struct MovieItemView: View {
     }
 }
 
-#Preview {
-    let movie = Movie(id: 0, title: "Star Wars")
-    return MovieItemView(movie: movie)
-}
+//#Preview {
+//    let movie = Movie(id: 0, title: "Star Wars")
+//    return MovieItemView(movie: movie)
+//}
