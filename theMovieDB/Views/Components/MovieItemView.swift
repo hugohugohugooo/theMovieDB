@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MovieItemView: View {
+    let movie: Movie
+    
     var body: some View {
         HStack (alignment: .top) {
             Image("ForSplash")
@@ -31,5 +33,6 @@ struct MovieItemView: View {
 }
 
 #Preview {
-    MovieItemView()
+    let movie = Movie(id: 0, title: "Star Wars")
+    return MovieItemView(movie: movie)
 }

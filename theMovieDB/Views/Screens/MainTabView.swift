@@ -38,12 +38,15 @@ struct MainTabView: View {
             }
             .tag(2)
         }
-        .tint(Colors.highlightColor.value)
         .onAppear(perform: {
             UITabBar.appearance().unselectedItemTintColor = .gray
             UITabBarItem.appearance().badgeColor = UIColor(Colors.orange.value)
-            UITabBar.appearance().backgroundColor = UIColor(Colors.background.value)
+            let appearance = UITabBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = UIColor(Colors.background.value)
+            UITabBar.appearance().standardAppearance = appearance
         })
+        // TODO: Add blue divider line
     }
 }
 

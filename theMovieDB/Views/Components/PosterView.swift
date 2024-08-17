@@ -8,20 +8,26 @@
 import SwiftUI
 
 struct PosterView: View {
+    private let spacing: CGFloat = 8.0
+    private let cornerRadius = 5
     let movie: Movie
     var rank: String? = nil
     
     var body: some View {
-        AsyncImage(url: movie.posterURL){ image in
+        AsyncImage(url: movie.posterURL) { image in
             ZStack(alignment: .bottomLeading) {
                 HStack(alignment: .top) {
                     Spacer()
                     VStack(alignment: .leading) {
                         image.resizable()
-                            .scaledToFill()
+                            .scaledToFit()
                             .clipped()
                             .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
-                        Spacer()
+                            .padding(.all, 8)
+                        if rank != nil {
+                            Spacer()
+                                .frame(height: spacing*3)
+                        }
                     }
                 }
                 if let rankText = rank {
@@ -32,9 +38,15 @@ struct PosterView: View {
                             .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                             .foregroundColor(Colors.grey.value)
                             .shadow(color: Colors.highlightColor.value, radius: 1)
+                            .alignmentGuide(.leading, computeValue: { viewDimensions in
+                                let defaultLeading = viewDimensions[.leading]
+                                let newLeading = defaultLeading + spacing
+                                return newLeading
+                            })
                     }
                 }
             }
+            .scaledToFill()
         } placeholder: {
             ProgressView()
         }

@@ -13,12 +13,9 @@ struct PopularCollectionView: View {
     var body: some View {
         GeometryReader { geometry in
             ScrollView(.horizontal) {
-                LazyHStack(alignment: .top, spacing: geometry.size.width * 0.1) {
+                HStack(alignment: .top) {
                     ForEach(movies.indices) { index in
-                        let itemWidth = geometry.size.width * 0.4
-                        let itemHeight = itemWidth * 16/9
                         PosterView(movie: movies[index], rank:String(index+1))
-                            .frame(width: itemWidth, height: itemHeight)
                     }
                 }
                 .padding(.leading, 30.0)

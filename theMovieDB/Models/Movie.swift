@@ -14,8 +14,8 @@ struct MovieResponse: Codable {
 struct Movie: Codable, Identifiable {
     let id: Int
     let title: String
-    let backdropPath: String?
-    let posterPath: String?
+    var backdropPath: String?
+    var posterPath: String?
     
     var backdropURL: URL {
         return URL(string: "https://image.tmdb.org/t/p/w500\(backdropPath ?? "")")!

@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct SearchView: View {
+//    @Binding var searchText: String
     
     var body: some View {
         List {
-            MovieItemView()
+//            SearchBar(searchText: $searchText)
+//            MovieItemView()
         }
     }
 }
 
 #Preview {
-    SearchView()
+    return SearchView()
 }

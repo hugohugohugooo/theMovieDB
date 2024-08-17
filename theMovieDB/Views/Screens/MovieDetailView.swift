@@ -8,16 +8,25 @@
 import SwiftUI
 
 struct MovieDetailView: View {
+    let movie: Movie
+    
     var body: some View {
-        VStack(alignment:.leading) {
-            // Header
-            
-            Image("ForSplash")
+        GeometryReader { geometry in
+            VStack(alignment:.leading) {
+                ZStack {
+                    // Header
+                    AsyncImage(url: movie.backdropURL) { image in
+                        
+                    }
+                    Image(systemName: "play.circle")
+                    
+                }
                 
+            }
         }
     }
 }
 
-#Preview {
-    MovieDetailView()
-}
+//#Preview {
+//    MovieDetailView()
+//}

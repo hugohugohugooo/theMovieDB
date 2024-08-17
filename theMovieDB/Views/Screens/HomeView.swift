@@ -38,7 +38,7 @@ struct HomeView: View {
                         } else {
                             if let popularMovies = popularViewModel.movies {
                                 PopularCollectionView(movies: popularMovies)
-                                    .frame(height:geometry.size.height * 0.4)
+                                    .frame(height:geometry.size.height * 0.45)
                             }
                         }
                     }
@@ -60,12 +60,11 @@ struct HomeView: View {
                         .tint(Colors.white.value)
                     }
                     
-                    let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
-                    LazyVGrid(columns: columns, spacing: 0) {
+                    let columns: [GridItem] = Array(repeating: .init(), count: 3)
+                    LazyVGrid(columns: columns) {
                         if let upcomingMovies = upcomingViewModel.movies {
                             ForEach(0..<6) { index in
                                 PosterView(movie: upcomingMovies[index])
-                                    .frame(width:geometry.size.width * 0.30)
                             }
                         }
                     }
