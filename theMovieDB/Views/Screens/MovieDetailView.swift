@@ -8,16 +8,31 @@
 import SwiftUI
 
 struct MovieDetailView: View {
-    let movie: Movie
+    @StateObject private var movieViewModel = MovieViewModel()
+    var movieId: Int
     
     var body: some View {
         NavigationStack {
             ZStack(alignment:.top) {
                 Colors.background.value
-                VStack(alignment: .leading) {
-                    HeaderView(movie: movie)
-                    DetailsView(movie: movie)
-                        .offset(y:-70)
+                if self.movieViewModel.isLoading {
+                    ZStack(alignment:.center) {
+                        Colors.background.value
+                        Spacer()
+                        ProgressView().tint(Color.white)
+                        Spacer()
+                    }
+                } else if let errorMessage = self.movieViewModel.errorMessage {
+                    Text(errorMessage)
+                    //TODO: Show error view here
+                } else {
+                    VStack(alignment: .leading) {
+                        if let movie = self.movieViewModel.movie {
+                            HeaderView(movie: movie)
+                            DetailsView(movie: movie)
+                                .offset(y:-70)
+                        }
+                    }
                 }
             }
         }
@@ -32,7 +47,11 @@ struct MovieDetailView: View {
         }
         .toolbarBackground(Colors.background.value, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
-        
+        .task {
+            Task {
+                await self.movieViewModel.completeMovieDetails(for: movieId)
+            }
+        }
     }
 }
 
@@ -103,9 +122,9 @@ struct DetailsView: View {
             HStack(alignment:.center) {
                 Spacer()
                 Label(movie.releaseDate ??
-                      "n/a", systemImage: "calendar")
+                      "N/A", systemImage: "calendar")
                 Label(movie.durationText, systemImage: "clock")
-                Label(String(movie.id), systemImage: "ticket")
+                Label(movie.genres?.first?.name ?? "N/A", systemImage: "ticket")
                 Spacer()
             }
             .font(.subheadline)
@@ -120,5 +139,5 @@ struct DetailsView: View {
 }
 
 #Preview {
-    MovieDetailView(movie: .init(id: 0, title: "Star Wars", overview: "This is Star Wars.", voteAverage: 4.5, voteCount: 900, runtime: 12000, releaseDate: "2020"))
+    MovieDetailView(movieId: 533535)
 }

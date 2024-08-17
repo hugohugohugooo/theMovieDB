@@ -11,7 +11,15 @@ struct MovieResponse: Codable {
     var results: [Movie]
 }
 
+struct MovieGenre: Codable {
+    let name: String
+}
+
 struct Movie: Codable, Identifiable, Equatable {
+    static func == (lhs: Movie, rhs: Movie) -> Bool {
+        lhs.id == rhs.id
+    }
+    
     let id: Int
     let title: String
     var backdropPath: String?
@@ -21,6 +29,7 @@ struct Movie: Codable, Identifiable, Equatable {
     let voteCount: Int
     let runtime: Int?
     let releaseDate: String?
+    let genres: [MovieGenre]?
     
     var backdropURL: URL {
         return URL(string: "https://image.tmdb.org/t/p/w500\(backdropPath ?? "")")!
@@ -35,7 +44,7 @@ struct Movie: Codable, Identifiable, Equatable {
             return "N/A"
         }
         let formatter = DateComponentsFormatter()
-        formatter.unitsStyle = .full
+        formatter.unitsStyle = .abbreviated
         formatter.allowedUnits = [.hour, .minute]
         return formatter.string(from: TimeInterval(runtime) * 60) ?? "N/A"
     }

@@ -9,6 +9,7 @@ import Foundation
 
 protocol TheMovieDBProtocol {
     func fetchMovies(for: MovieEndpoints) async throws -> [Movie]
+    func fetchMovie(id: Int) async throws -> Movie
 }
 
 enum MovieEndpoints: String {

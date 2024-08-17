@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct HomeView: View {
-    @StateObject private var popularViewModel = MovieViewModel()
-    @StateObject private var nowPlayingViewModel = MovieViewModel()
-    @StateObject private var upcomingViewModel = MovieViewModel()
-    @StateObject private var topRatedViewModel = MovieViewModel()
+    @StateObject private var popularViewModel = MoviesViewModel()
+    @StateObject private var nowPlayingViewModel = MoviesViewModel()
+    @StateObject private var upcomingViewModel = MoviesViewModel()
+    @StateObject private var topRatedViewModel = MoviesViewModel()
 
     @State private var searchText: String = "Star Wars";
     @State private var selectedTab: CGFloat = 0

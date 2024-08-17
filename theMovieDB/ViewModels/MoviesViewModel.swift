@@ -2,14 +2,14 @@
 //  MovieViewModel.swift
 //  theMovieDB
 //
-//  Created by Hugo Rodriguez S. on 17/8/24.
+//  Created by Hugo Rodriguez S. on 14/8/24.
 //
 
 import Foundation
 
 @MainActor
-class MovieViewModel : ObservableObject {
-    @Published var movie: Movie?
+class MoviesViewModel : ObservableObject {
+    @Published var movies: [Movie]?
     @Published var isLoading = false
     @Published var errorMessage: String?
     
@@ -19,12 +19,12 @@ class MovieViewModel : ObservableObject {
         self.apiService = apiService;
     }
     
-    func completeMovieDetails(for movieId: Int) async {
+    func getMovies(for endpoint: MovieEndpoints) async {
         isLoading = true
         errorMessage = nil
         
         do {
-            movie = try await apiService.fetchMovie(id: movieId)
+            movies = try await apiService.fetchMovies(for: endpoint)
         } catch {
             errorMessage = error.localizedDescription
         }

@@ -14,7 +14,7 @@ struct PosterView: View {
     var rank: String? = nil
     
     var body: some View {
-        NavigationLink(destination: MovieDetailView(movie: movie)) {
+        NavigationLink(destination: MovieDetailView(movieId: movie.id)) {
             AsyncImage(url: movie.posterURL) { image in
                 ZStack(alignment: .bottomLeading) {
                     HStack(alignment: .top) {

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainTabView: View {
-    @StateObject private var upcomingViewModel = MovieViewModel()
+    @StateObject private var upcomingViewModel = MoviesViewModel()
 
     var body: some View {
         // todo: make the tab items' creation dynamic
