@@ -11,7 +11,7 @@ struct MovieResponse: Codable {
     var results: [Movie]
 }
 
-struct Movie: Codable, Identifiable {
+struct Movie: Codable, Identifiable, Equatable {
     let id: Int
     let title: String
     var backdropPath: String?

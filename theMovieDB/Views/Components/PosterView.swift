@@ -14,41 +14,38 @@ struct PosterView: View {
     var rank: String? = nil
     
     var body: some View {
-        AsyncImage(url: movie.posterURL) { image in
-            ZStack(alignment: .bottomLeading) {
-                HStack(alignment: .top) {
-                    Spacer()
-                    VStack(alignment: .leading) {
-                        image.resizable()
-                            .scaledToFit()
-                            .clipped()
-                            .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
-                            .padding(.all, 8)
-                        if rank != nil {
+        NavigationLink(destination: MovieDetailView(movie: movie)) {
+            AsyncImage(url: movie.posterURL) { image in
+                ZStack(alignment: .bottomLeading) {
+                    HStack(alignment: .top) {
+                        Spacer()
+                        VStack(alignment: .leading) {
+                            image.resizable()
+                                .scaledToFit()
+                                .clipped()
+                                .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                                .padding(.all, 8)
+                            if rank != nil {
+                                Spacer()
+                                    .frame(height: spacing*3)
+                            }
+                        }
+                    }
+                    if let rankText = rank {
+                        VStack(alignment: .leading) {
                             Spacer()
-                                .frame(height: spacing*3)
+                            Text(rankText)
+                                .font(.system(size: 80))
+                                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                                .foregroundColor(Colors.grey.value)
+                                .shadow(color: Colors.highlightColor.value, radius: 1)
                         }
                     }
                 }
-                if let rankText = rank {
-                    VStack(alignment: .leading) {
-                        Spacer()
-                        Text(rankText)
-                            .font(.system(size: 80))
-                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                            .foregroundColor(Colors.grey.value)
-                            .shadow(color: Colors.highlightColor.value, radius: 1)
-                            .alignmentGuide(.leading, computeValue: { viewDimensions in
-                                let defaultLeading = viewDimensions[.leading]
-                                let newLeading = defaultLeading + spacing
-                                return newLeading
-                            })
-                    }
-                }
+                .scaledToFill()
+            } placeholder: {
+                ProgressView()
             }
-            .scaledToFill()
-        } placeholder: {
-            ProgressView()
         }
     }
 }

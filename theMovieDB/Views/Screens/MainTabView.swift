@@ -8,44 +8,48 @@
 import SwiftUI
 
 struct MainTabView: View {
+    @StateObject private var upcomingViewModel = MovieViewModel()
+
     var body: some View {
         // todo: make the tab items' creation dynamic
-        TabView() {
-            NavigationStack() {
-                HomeView()
+        Group {
+            TabView() {
+                NavigationStack() {
+                    HomeView()
+                }
+                .tabItem {
+                    Label("Home", systemImage: "house.fill")
+                }
+                .tag(0)
+                
+                NavigationStack() {
+                    SearchView()
+                }
+                .tabItem {
+                    Label("Search", systemImage: "magnifyingglass")
+                }
+                .tag(1)
+                
+                NavigationStack() {
+                    WatchListView()
+                }
+                .tabItem {
+                    Label("Watch List", systemImage: "bookmark.fill")
+                    
+                    Text("Watch list")
+                    Image(systemName: "bookmark.fill")
+                }
+                .tag(2)
             }
-            .tabItem {
-                Text("Home")
-                Image(systemName: "house.fill")
-                    .renderingMode(.template)
-            }
-            .tag(0)
-            
-            NavigationStack() {
-                SearchView()
-            }
-            .tabItem {
-                Label("Search", systemImage: "magnifyingglass")
-            }
-            .tag(1)
-            
-            NavigationStack() {
-                WatchListView()
-            }
-            .tabItem {
-                Text("Watch list")
-                Image(systemName: "bookmark.fill")
-            }
-            .tag(2)
         }
-        .onAppear(perform: {
-            UITabBar.appearance().unselectedItemTintColor = .gray
-            UITabBarItem.appearance().badgeColor = UIColor(Colors.orange.value)
-            let appearance = UITabBarAppearance()
-            appearance.configureWithOpaqueBackground()
-            appearance.backgroundColor = UIColor(Colors.background.value)
-            UITabBar.appearance().standardAppearance = appearance
-        })
+        .toolbarBackground(.visible, for:.tabBar)
+        .toolbarBackground(
+
+                // 1
+                Color.yellow,
+                // 2
+                for: .tabBar)
+        .background(Colors.background.value)
         // TODO: Add blue divider line
     }
 }
