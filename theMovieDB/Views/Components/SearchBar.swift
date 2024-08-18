@@ -10,22 +10,26 @@ import SwiftUI
 struct SearchBar: View {
     @Binding var searchText: String
     var searchAction: () -> Void
+    var onTextFieldTapAction: () -> Void = { }
     
     var body: some View {
         HStack {
             ZStack {
                 HStack(alignment: .center) {
-                    TextField("Search", text: $searchText)
-                    .frame(height: 50)
+                    TextField("", text: $searchText, prompt: Text("Search"))
                     .textFieldStyle(.plain)
                     .cornerRadius(12)
+                    .simultaneousGesture(TapGesture().onEnded {
+                      onTextFieldTapAction()
+                    })
+                    .frame(height: 44)
                     Button("", systemImage: "magnifyingglass") {
                         searchAction()
                     }
                 }
+                .foregroundColor(Colors.grey.value)
                 .padding(.horizontal)
-                .foregroundColor(Colors.white.value)
-                .background(Colors.grey.value, in: Capsule())
+                .background(Colors.white.value, in: Capsule())
             }
         }
     }

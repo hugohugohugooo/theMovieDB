@@ -13,7 +13,7 @@ struct SearchView: View {
     
     var body: some View {
         NavigationStack {
-            ZStack(alignment:.top) {
+            ZStack(alignment:.center) {
                 Colors.background.value
                 VStack(alignment: .leading) {
                     SearchBar(searchText: $searchText) {
@@ -22,13 +22,13 @@ struct SearchView: View {
                         }
                     }
                     if self.searchViewModel.results.isEmpty {
-                        Text("Try searching for something")
+                        MessageView(title: "Try searching for something!", description: "Results will display when you hit the search button.", image: Image(systemName: "magnifyingglass.circle.fill"))
                     } else {
                         MovieListView(movies: self.searchViewModel.results)
                     }
                 }
-                .padding(.horizontal, 15)
             }
+            .padding(.horizontal, 15)
         }
         .background(Colors.background.value)
         .foregroundColor(Colors.white.value)
@@ -40,8 +40,6 @@ struct SearchView: View {
             }
         }
         .toolbarTitleDisplayMode(.inline)
-        .toolbarBackground(Colors.background.value, for: .navigationBar)
-        .toolbarBackground(.visible, for: .navigationBar)
     }
 }
 

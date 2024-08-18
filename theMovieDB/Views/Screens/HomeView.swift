@@ -15,6 +15,7 @@ struct HomeView: View {
 
     @State private var searchText: String = ""
     @State private var selectedTab: Int = 0
+    @Binding var tabSelection: Int
     
     private var selectedViewModel: MoviesViewModel? {
         switch selectedTab {
@@ -38,8 +39,10 @@ struct HomeView: View {
                         VStack(alignment: .leading) {
                             Text("What do you want to watch?")
                                 .font(.headline)
-                            SearchBar(searchText: $searchText) {
-                                // TODO: Move to search tab with search text
+                            SearchBar(searchText: $searchText, searchAction: {
+                                tabSelection = 1
+                            }) {
+                                tabSelection = 1
                             }
                         }
                         .padding(.all)
@@ -49,7 +52,7 @@ struct HomeView: View {
                         if let popularMovies = popularViewModel.movies {
                             PopularCollectionView(movies: popularMovies)
                                 .frame(height:geometry.size.height * 0.45)
-                        }
+                        } 
                         // Categories
                         VStack(alignment: .leading) {
                             Picker("", selection: $selectedTab) {
@@ -59,7 +62,6 @@ struct HomeView: View {
                             }
                             .pickerStyle(.segmented)
                             .padding(.bottom, 10)
-                            //                        .background(Colors.background.value)
                             .tint(Colors.white.value)
                         }
                         
@@ -70,8 +72,8 @@ struct HomeView: View {
                                 ForEach(0..<6) { index in
                                     PosterView(movie: movies[index])
                                 }
-                            } else {
-                                // TODO: Display error on grid
+                            } else if let errorMessage = selectedViewModel?.errorMessage {
+                                MessageView(title: "Uh oh! Something went wrong!", description: errorMessage, image: Image(systemName: "xmark.circle.fill"))
                             }
                         }
                     }

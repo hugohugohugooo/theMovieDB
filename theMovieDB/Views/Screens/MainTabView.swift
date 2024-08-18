@@ -9,18 +9,21 @@ import SwiftUI
 
 struct MainTabView: View {
     @StateObject private var upcomingViewModel = MoviesViewModel()
+    @State private var tabSelection: Int = 0
 
     var body: some View {
-        // TODO: make the tab items' creation dynamic
         Group {
-            TabView() {
+            TabView(selection: $tabSelection) {
                 NavigationStack() {
-                    HomeView()
+                    HomeView(tabSelection: $tabSelection)
                 }
                 .tabItem {
                     Label("Home", systemImage: "house.fill")
                 }
                 .tag(0)
+                .toolbarBackground(.visible, for:.bottomBar,.navigationBar, .tabBar)
+                .toolbarBackground(Colors.grey.value, for: .bottomBar, .navigationBar,.tabBar)
+                // TODO: Add blue divider line
                 
                 NavigationStack() {
                     SearchView()
@@ -29,6 +32,8 @@ struct MainTabView: View {
                     Label("Search", systemImage: "magnifyingglass")
                 }
                 .tag(1)
+                .toolbarBackground(.visible, for:.bottomBar,.navigationBar, .tabBar)
+                .toolbarBackground(Colors.grey.value, for: .bottomBar, .navigationBar,.tabBar)
                 
                 NavigationStack() {
                     WatchListView()
@@ -40,8 +45,9 @@ struct MainTabView: View {
                     Image(systemName: "bookmark.fill")
                 }
                 .tag(2)
+                .toolbarBackground(.visible, for:.bottomBar,.navigationBar, .tabBar)
+                .toolbarBackground(Colors.grey.value, for: .bottomBar, .navigationBar,.tabBar)
             }
-            // TODO: Add blue divider line
         }
     }
 }

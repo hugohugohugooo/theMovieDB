@@ -52,8 +52,6 @@ struct MovieDetailView: View {
                 }
             }
         }
-        .toolbarBackground(Colors.background.value, for: .navigationBar)
-        .toolbarBackground(.visible, for: .navigationBar)
         .task {
             Task {
                 await self.movieViewModel.completeMovieDetails(for: movieId)
