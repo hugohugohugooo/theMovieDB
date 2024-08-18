@@ -11,7 +11,7 @@ struct MainTabView: View {
     @StateObject private var upcomingViewModel = MoviesViewModel()
 
     var body: some View {
-        // todo: make the tab items' creation dynamic
+        // TODO: make the tab items' creation dynamic
         Group {
             TabView() {
                 NavigationStack() {
@@ -41,16 +41,8 @@ struct MainTabView: View {
                 }
                 .tag(2)
             }
+            // TODO: Add blue divider line
         }
-        .toolbarBackground(.visible, for:.tabBar)
-        .toolbarBackground(
-
-                // 1
-                Color.yellow,
-                // 2
-                for: .tabBar)
-        .background(Colors.background.value)
-        // TODO: Add blue divider line
     }
 }
 

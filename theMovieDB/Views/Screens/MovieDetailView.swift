@@ -67,9 +67,13 @@ struct HeaderView: View {
         ZStack {
             // Header
             AsyncImage(url: movie.backdropURL, transaction: Transaction(animation: .easeIn(duration: TimeInterval(0.1)))
-            ) { image in
+            ) { phase in
                 VStack {
-                    image.image?.resizable()
+                    if let image = phase.image {
+                        image.resizable()
+                    } else  {
+                        Color.black
+                    }
                 }
             }
             Button("", systemImage: "play.circle") {
@@ -81,7 +85,6 @@ struct HeaderView: View {
             
             ratingView(movie: movie)
         }
-        .background(Color.black)
         .aspectRatio(16/9, contentMode: .fit)
     }
 }
@@ -110,8 +113,7 @@ struct DetailsView: View {
         VStack(alignment:.leading, spacing: 15) {
             HStack(alignment: .lastTextBaseline, spacing: 15) {
                 AsyncImage(url:movie.posterURL,
-                           transaction: Transaction(animation: .default)
-                ) { image in
+                           transaction: Transaction(animation: .easeIn(duration: TimeInterval(0.1)))                ) { image in
                     image.image?
                         .resizable()
                         .scaledToFit()

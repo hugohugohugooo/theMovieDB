@@ -14,7 +14,20 @@ struct HomeView: View {
     @StateObject private var topRatedViewModel = MoviesViewModel()
 
     @State private var searchText: String = ""
-    @State private var selectedTab: CGFloat = 0
+    @State private var selectedTab: Int = 0
+    
+    private var selectedViewModel: MoviesViewModel? {
+        switch selectedTab {
+            case 0:
+                return nowPlayingViewModel
+            case 1:
+                return upcomingViewModel
+            case 2:
+                return topRatedViewModel
+        default:
+            return nil
+        }
+    }
     
     var body: some View {
         Group {
@@ -51,11 +64,14 @@ struct HomeView: View {
                         }
                         
                         let columns: [GridItem] = Array(repeating: .init(), count: 3)
+                        
                         LazyVGrid(columns: columns) {
-                            if let upcomingMovies = upcomingViewModel.movies {
+                            if let movies = selectedViewModel?.movies {
                                 ForEach(0..<6) { index in
-                                    PosterView(movie: upcomingMovies[index])
+                                    PosterView(movie: movies[index])
                                 }
+                            } else {
+                                // TODO: Display error on grid
                             }
                         }
                     }
