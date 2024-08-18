@@ -1,4 +1,4 @@
-# Project Documentation
+# TheMovieDB iOS App
 
 ## 1. What does the Single Responsibility Principle consist of? What's its purpose?
 
