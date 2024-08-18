@@ -10,6 +10,8 @@ import SwiftUI
 struct MovieDetailView: View {
     @Environment(\.openURL) private var openURL
     @StateObject private var movieViewModel = MovieViewModel()
+    @StateObject private var watchListViewModel = WatchListViewModel.shared
+
     var movieId: Int
     
     var body: some View {
@@ -39,7 +41,6 @@ struct MovieDetailView: View {
             }
         }
         .background(Colors.background.value)
-        .foregroundColor(Colors.white.value)
         .toolbar {
             ToolbarItem(placement: .principal) {
                 Text("Detail")
@@ -47,11 +48,12 @@ struct MovieDetailView: View {
                     .foregroundColor(Colors.white.value)
             }
             ToolbarItem(placement: .primaryAction) {
-                Button("", systemImage: "bookmark") {
-                    
+                Button("", systemImage: self.watchListViewModel.hasMovie(withId: self.movieId) ? "bookmark.fill" : "bookmark") {
+                    self.watchListViewModel.handle(self.movieViewModel.movie!)
                 }
             }
         }
+        .foregroundColor(Colors.white.value)
         .task {
             Task {
                 await self.movieViewModel.completeMovieDetails(for: movieId)

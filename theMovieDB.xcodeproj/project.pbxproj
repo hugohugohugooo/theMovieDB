@@ -30,6 +30,7 @@
 		9A9503BF2C715F7E002BF948 /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9503BE2C715F7E002BF948 /* MovieViewModel.swift */; };
 		9A9503C12C717AB8002BF948 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9503C02C717AB8002BF948 /* SearchViewModel.swift */; };
 		9A9503C32C71B3D2002BF948 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9503C22C71B3D2002BF948 /* MessageView.swift */; };
+		9A9503C52C71C49E002BF948 /* WatchListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9503C42C71C49E002BF948 /* WatchListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		9A9503BE2C715F7E002BF948 /* MovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
 		9A9503C02C717AB8002BF948 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		9A9503C22C71B3D2002BF948 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		9A9503C42C71C49E002BF948 /* WatchListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +182,7 @@
 				9A9503B82C6D8501002BF948 /* MoviesViewModel.swift */,
 				9A9503BE2C715F7E002BF948 /* MovieViewModel.swift */,
 				9A9503C02C717AB8002BF948 /* SearchViewModel.swift */,
+				9A9503C42C71C49E002BF948 /* WatchListViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 				9A9503962C6C3AC9002BF948 /* Colors.swift in Sources */,
 				9A95039C2C6C4DE1002BF948 /* PopularCollectionView.swift in Sources */,
 				9A9503BB2C6DB0A1002BF948 /* APIUtils.swift in Sources */,
+				9A9503C52C71C49E002BF948 /* WatchListViewModel.swift in Sources */,
 				9A9503C12C717AB8002BF948 /* SearchViewModel.swift in Sources */,
 				9A9503AC2C6D3A27002BF948 /* WatchListView.swift in Sources */,
 				9A9503BF2C715F7E002BF948 /* MovieViewModel.swift in Sources */,

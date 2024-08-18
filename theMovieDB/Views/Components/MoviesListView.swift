@@ -12,7 +12,7 @@ struct MovieListView: View {
     var body: some View {
         ScrollView {
             VStack(alignment:.leading) {
-                ForEach(movies.indices) { index in
+                ForEach(movies.indices, id: \.self) { index in
                     MovieItemView(movie: movies[index])
                         .frame(height: 150)
                 }

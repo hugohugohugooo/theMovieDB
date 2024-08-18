@@ -45,8 +45,8 @@ struct MainTabView: View {
                     Image(systemName: "bookmark.fill")
                 }
                 .tag(2)
-                .toolbarBackground(.visible, for:.bottomBar,.navigationBar, .tabBar)
-                .toolbarBackground(Colors.grey.value, for: .bottomBar, .navigationBar,.tabBar)
+                .toolbarBackground(.visible, for:.navigationBar, .tabBar)
+                .toolbarBackground(Colors.grey.value, for: .navigationBar, .tabBar)
             }
         }
     }
