@@ -45,6 +45,11 @@ struct MovieDetailView: View {
                     .fontWeight(.bold)
                     .foregroundColor(Colors.white.value)
             }
+            ToolbarItem(placement: .primaryAction) {
+                Button("", systemImage: "bookmark") {
+                    
+                }
+            }
         }
         .toolbarBackground(Colors.background.value, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
@@ -61,7 +66,8 @@ struct HeaderView: View {
     var body: some View {
         ZStack {
             // Header
-            AsyncImage(url: movie.backdropURL) { image in
+            AsyncImage(url: movie.backdropURL, transaction: Transaction(animation: .easeIn(duration: TimeInterval(0.1)))
+            ) { image in
                 VStack {
                     image.image?.resizable()
                 }
@@ -75,6 +81,7 @@ struct HeaderView: View {
             
             ratingView(movie: movie)
         }
+        .background(Color.black)
         .aspectRatio(16/9, contentMode: .fit)
     }
 }
@@ -102,7 +109,9 @@ struct DetailsView: View {
     var body: some View {
         VStack(alignment:.leading, spacing: 15) {
             HStack(alignment: .lastTextBaseline, spacing: 15) {
-                AsyncImage(url:movie.posterURL) { image in
+                AsyncImage(url:movie.posterURL,
+                           transaction: Transaction(animation: .default)
+                ) { image in
                     image.image?
                         .resizable()
                         .scaledToFit()

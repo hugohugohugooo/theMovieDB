@@ -13,7 +13,7 @@ struct HomeView: View {
     @StateObject private var upcomingViewModel = MoviesViewModel()
     @StateObject private var topRatedViewModel = MoviesViewModel()
 
-    @State private var searchText: String = "Star Wars";
+    @State private var searchText: String = ""
     @State private var selectedTab: CGFloat = 0
     
     var body: some View {
@@ -24,7 +24,10 @@ struct HomeView: View {
                         //Header
                         VStack(alignment: .leading) {
                             Text("What do you want to watch?")
-                            SearchBar(searchText: $searchText)
+                                .font(.headline)
+                            SearchBar(searchText: $searchText) {
+                                // TODO: Move to search tab with search text
+                            }
                         }
                         .padding(.all)
                         .foregroundStyle(.white)

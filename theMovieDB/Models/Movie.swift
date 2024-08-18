@@ -49,6 +49,17 @@ struct Movie: Codable, Identifiable, Equatable {
         return formatter.string(from: TimeInterval(runtime) * 60) ?? "N/A"
     }
     
+    var yearText: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-mm-dd"
+        guard let releaseDate = self.releaseDate, let date = dateFormatter.date(from: releaseDate) else {
+            return "N/A"
+        }
+        let yearFormatter = DateFormatter()
+        yearFormatter.dateFormat = "yyyy"
+        return yearFormatter.string(from: date)
+    }
+    
     var ratingText: String {
         return String(round(self.voteAverage * 10) / 10.0)
     }

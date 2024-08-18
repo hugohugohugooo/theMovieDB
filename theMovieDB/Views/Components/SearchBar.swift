@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SearchBar: View {
     @Binding var searchText: String
+    var searchAction: () -> Void
     
     var body: some View {
         HStack {
@@ -18,7 +19,9 @@ struct SearchBar: View {
                     .frame(height: 50)
                     .textFieldStyle(.plain)
                     .cornerRadius(12)
-                    Image(systemName: "magnifyingglass")
+                    Button("", systemImage: "magnifyingglass") {
+                        searchAction()
+                    }
                 }
                 .padding(.horizontal)
                 .foregroundColor(Colors.white.value)
@@ -32,7 +35,9 @@ struct SearchBar: View {
     struct Preview: View {
         @State var searchText = "Star wars"
         var body: some View {
-            SearchBar(searchText: $searchText)
+            SearchBar(searchText: $searchText) {
+                
+            }
         }
     }
     return Preview()
