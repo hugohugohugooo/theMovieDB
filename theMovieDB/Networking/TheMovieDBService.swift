@@ -10,7 +10,7 @@ import Foundation
 class TheMovieDBService: TheMovieDBProtocol {
     //TODO: Cleanup env variables
     private let baseURL = "https://api.themoviedb.org/3"
-    private let authKey = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyYmYxMDA1NDFiY2IwODI4NGQwZjEzMTM3MTY5YTc0NiIsIm5iZiI6MTcyMzU5NjA5My4wNzY0NDcsInN1YiI6IjY2YmJmYzNkOWEzNzk0MTM2ODcxYWYwZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.PMQxmIVH10Jx0bdFbYzku-uXbh7c-F_8FQrWHbiZLJM"
+    private let authKey = Bundle.main.object(forInfoDictionaryKey: "theMovieDB_API_KEY") as? String
     private let urlSession = URLSession.shared
     private let jsonDecoder = APIUtils.jsonDecoder
     
@@ -20,7 +20,7 @@ class TheMovieDBService: TheMovieDBProtocol {
         request.timeoutInterval = 10
         request.allHTTPHeaderFields = [
           "accept": "application/json",
-          "Authorization": "\(authKey)"
+          "Authorization": "\(authKey ?? "")"
         ]
         
         return request
@@ -78,7 +78,7 @@ class TheMovieDBService: TheMovieDBProtocol {
             URLQueryItem(name: "page", value: "1"),
         ]
         components.queryItems = components.queryItems.map { $0 + queryItems } ?? queryItems
-        var request = self.prepareRequest(with: components.url!, cachePolicy: .reloadRevalidatingCacheData);
+        let request = self.prepareRequest(with: components.url!, cachePolicy: .reloadRevalidatingCacheData);
         let (data, response) = try await URLSession.shared.data(for: request)
         
         guard (response as? HTTPURLResponse)?.statusCode == 200 else {

@@ -14,7 +14,7 @@ struct PopularCollectionView: View {
         GeometryReader { geometry in
             ScrollView(.horizontal) {
                 HStack(alignment: .top) {
-                    ForEach(movies.indices) { index in
+                    ForEach(movies.indices, id: \.self) { index in
                         PosterView(movie: movies[index], rank:String(index+1))
                     }
                 }

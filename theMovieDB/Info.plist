@@ -5,6 +5,6 @@
 	<key>theMovieDB_Base_URL</key>
 	<string>https://api.themoviedb.org/3</string>
 	<key>theMovieDB_API_KEY</key>
-	<string>eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyYmYxMDA1NDFiY2IwODI4NGQwZjEzMTM3MTY5YTc0NiIsIm5iZiI6MTcyMzU5NjA5My4wNzY0NDcsInN1YiI6IjY2YmJmYzNkOWEzNzk0MTM2ODcxYWYwZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.PMQxmIVH10Jx0bdFbYzku-uXbh7c-F_8FQrWHbiZLJM</string>
+	<string>Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyYmYxMDA1NDFiY2IwODI4NGQwZjEzMTM3MTY5YTc0NiIsIm5iZiI6MTcyMzU5NjA5My4wNzY0NDcsInN1YiI6IjY2YmJmYzNkOWEzNzk0MTM2ODcxYWYwZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.PMQxmIVH10Jx0bdFbYzku-uXbh7c-F_8FQrWHbiZLJM</string>
 </dict>
 </plist>
