@@ -19,9 +19,10 @@ struct MovieDetailView: View {
                     ZStack(alignment:.center) {
                         Colors.background.value
                         Spacer()
-                        ProgressView().tint(Color.white)
+                        ProgressView().tint(Color.gray)
                         Spacer()
                     }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else if let errorMessage = self.movieViewModel.errorMessage {
                     Text(errorMessage)
                     //TODO: Show error view here

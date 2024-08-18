@@ -30,23 +30,9 @@ struct HomeView: View {
                         .foregroundStyle(.white)
                         
                         // Popular Movies
-                        VStack {
-                            if popularViewModel.isLoading {
-                                ProgressView()
-                            } else if let errorMessage = popularViewModel.errorMessage {
-                                Text(errorMessage)
-                                //TODO: Show error view here
-                            } else {
-                                if let popularMovies = popularViewModel.movies {
-                                    PopularCollectionView(movies: popularMovies)
-                                        .frame(height:geometry.size.height * 0.45)
-                                }
-                            }
-                        }
-                        .onAppear {
-                            Task {
-                                await popularViewModel.getMovies(for:.popular)
-                            }
+                        if let popularMovies = popularViewModel.movies {
+                            PopularCollectionView(movies: popularMovies)
+                                .frame(height:geometry.size.height * 0.45)
                         }
                         // Categories
                         VStack(alignment: .leading) {
@@ -77,7 +63,10 @@ struct HomeView: View {
         }
         .task {
             Task {
+                await popularViewModel.getMovies(for: .popular)
                 await upcomingViewModel.getMovies(for:.upcoming)
+                await nowPlayingViewModel.getMovies(for: .nowPlaying)
+                await topRatedViewModel.getMovies(for:.topRated)
             }
         }
     }

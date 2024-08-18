@@ -15,38 +15,50 @@ struct PosterView: View {
     
     var body: some View {
         NavigationLink(destination: MovieDetailView(movieId: movie.id)) {
-            AsyncImage(url: movie.posterURL) { image in
-                ZStack(alignment: .bottomLeading) {
-                    HStack(alignment: .top) {
-                        Spacer()
-                        VStack(alignment: .leading) {
-                            image.resizable()
-                                .scaledToFit()
-                                .clipped()
-                                .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
-                                .padding(.all, 8)
-                            if rank != nil {
+            AsyncImage(
+                url: movie.posterURL,
+                transaction: Transaction(animation: .easeInOut)
+            ) { phase in
+                switch phase {
+                case .empty:
+                    ZStack(alignment: .center) {
+                        ProgressView().tint(Color.gray)
+                    }
+                case .success(let image):
+                    ZStack(alignment: .bottomLeading) {
+                        HStack(alignment: .top) {
+                            Spacer()
+                            VStack(alignment: .leading) {
+                                image.resizable()
+                                    .scaledToFit()
+                                    .clipped()
+                                    .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                                    .padding(.all, 8)
+                                if rank != nil {
+                                    Spacer()
+                                        .frame(height: spacing*3)
+                                }
+                            }
+                        }
+                        if let rankText = rank {
+                            VStack(alignment: .leading) {
                                 Spacer()
-                                    .frame(height: spacing*3)
+                                Text(rankText)
+                                    .font(.system(size: 80))
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Colors.grey.value)
+                                    .shadow(color: Colors.highlightColor.value, radius: 1)
                             }
                         }
                     }
-                    if let rankText = rank {
-                        VStack(alignment: .leading) {
-                            Spacer()
-                            Text(rankText)
-                                .font(.system(size: 80))
-                                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                                .foregroundColor(Colors.grey.value)
-                                .shadow(color: Colors.highlightColor.value, radius: 1)
-                        }
-                    }
+                    .scaledToFill()
+                case .failure:
+                    Image(systemName: "wifi.slash")
+                @unknown default:
+                    EmptyView()
                 }
-                .scaledToFill()
-            } placeholder: {
-                ProgressView()
             }
-        }
+        }.frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 
