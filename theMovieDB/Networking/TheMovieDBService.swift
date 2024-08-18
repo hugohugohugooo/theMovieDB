@@ -36,7 +36,7 @@ class TheMovieDBService: TheMovieDBProtocol {
           URLQueryItem(name: "page", value: "1"),
         ]
         components.queryItems = components.queryItems.map { $0 + queryItems } ?? queryItems
-        var request = self.prepareRequest(with: components.url!, cachePolicy: .reloadRevalidatingCacheData);
+        let request = self.prepareRequest(with: components.url!, cachePolicy: .reloadRevalidatingCacheData);
         let (data, response) = try await URLSession.shared.data(for: request)
         
         guard (response as? HTTPURLResponse)?.statusCode == 200 else {
@@ -52,7 +52,11 @@ class TheMovieDBService: TheMovieDBProtocol {
             throw URLError(.badURL)
         }
         var components = URLComponents(url: url, resolvingAgainstBaseURL: true)!
-        var request = self.prepareRequest(with: components.url!, cachePolicy: .reloadRevalidatingCacheData);
+        let queryItems: [URLQueryItem] = [
+          URLQueryItem(name: "append_to_response", value: "videos"),
+        ]
+        components.queryItems = components.queryItems.map { $0 + queryItems } ?? queryItems
+        let request = self.prepareRequest(with: components.url!, cachePolicy: .reloadRevalidatingCacheData);
         let (data, response) = try await URLSession.shared.data(for: request)
         
         guard (response as? HTTPURLResponse)?.statusCode == 200 else {

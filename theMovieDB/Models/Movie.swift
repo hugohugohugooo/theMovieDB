@@ -11,8 +11,26 @@ struct MovieResponse: Codable {
     var results: [Movie]
 }
 
+struct MovieVideosResponse: Codable {
+    var results: [MovieVideo]
+}
+
 struct MovieGenre: Codable {
     let name: String
+}
+
+struct MovieVideo: Codable, Identifiable {
+    let id: String
+    let key: String
+    let name: String
+    let site: String
+    
+    var youtubeURL: URL? {
+        guard site == "YouTube" else {
+            return nil
+        }
+        return URL(string: "https://youtube.com/watch?v=\(key)")
+    }
 }
 
 struct Movie: Codable, Identifiable, Equatable {
@@ -30,6 +48,7 @@ struct Movie: Codable, Identifiable, Equatable {
     let runtime: Int?
     let releaseDate: String?
     let genres: [MovieGenre]?
+    let videos: MovieVideosResponse?
     
     var backdropURL: URL {
         return URL(string: "https://image.tmdb.org/t/p/w500\(backdropPath ?? "")")!

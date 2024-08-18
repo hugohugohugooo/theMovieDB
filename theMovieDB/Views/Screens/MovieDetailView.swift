@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MovieDetailView: View {
+    @Environment(\.openURL) private var openURL
     @StateObject private var movieViewModel = MovieViewModel()
     var movieId: Int
     
@@ -76,12 +77,14 @@ struct HeaderView: View {
                     }
                 }
             }
-            Button("", systemImage: "play.circle") {
-                // TODO: Open video
+            if let url =  movie.videos?.results.first?.youtubeURL {
+                Button("", systemImage: "play.circle") {
+                    UIApplication.shared.open(url)
+                }
+                .foregroundColor(Colors.white.value)
+                .font(.system(size: 100))
+                .opacity(0.8)
             }
-            .foregroundColor(Colors.white.value)
-            .font(.system(size: 100))
-            .opacity(0.8)
             
             ratingView(movie: movie)
         }
