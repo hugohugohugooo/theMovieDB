@@ -59,7 +59,6 @@
 		9A9503C02C717AB8002BF948 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		9A9503C22C71B3D2002BF948 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		9A9503C42C71C49E002BF948 /* WatchListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListViewModel.swift; sourceTree = "<group>"; };
-		9A9503C62C71DEA8002BF948 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,7 +101,6 @@
 				9A95038F2C6C2DD0002BF948 /* Models */,
 				9A9503B72C6D83E0002BF948 /* ViewModels */,
 				9A95038C2C6C2D29002BF948 /* Views */,
-				9A9503C62C71DEA8002BF948 /* README.md */,
 			);
 			path = theMovieDB;
 			sourceTree = "<group>";
